@@ -20,9 +20,11 @@ public class BusquedaThread extends Thread{
             System.out.println("Busqueda de un segmento del conjunto de servidores");
             
         }
-        
     }
     
+    public void rangos(int ini, int fin){
+        System.out.println("Rango de inicio a fin de la lista total");
+    }
        
     
 }
