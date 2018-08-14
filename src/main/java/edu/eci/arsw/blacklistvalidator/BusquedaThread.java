@@ -23,6 +23,8 @@ public class BusquedaThread extends Thread{
     }
     
     public void rangos(int ini, int fin){
+        this.num_ini=ini;
+        this.num_fin=fin;
         System.out.println("Rango de inicio a fin de la lista total");
     }
        
