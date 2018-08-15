@@ -16,6 +16,7 @@ public class BusquedaThread extends Thread{
     
     int num_ini;
     int num_fin;
+    int ipaddress;
     LinkedList<Integer> OcurrenciasListaNegra=new LinkedList<>();
     int num_ocurrencias;
     HostBlacklistsDataSourceFacade skds=HostBlacklistsDataSourceFacade.getInstance();
@@ -32,9 +33,10 @@ public class BusquedaThread extends Thread{
         }
     }
     
-    public void busqueda(int ini, int fin){
+    public void busqueda(int ini, int fin, int ip){
         this.num_ini=ini;
         this.num_fin=fin;
+        this.ipaddress= ip;
         System.out.println("Rango de inicio a fin de la lista total");
     }
        
