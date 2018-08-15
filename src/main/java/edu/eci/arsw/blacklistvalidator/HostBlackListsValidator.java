@@ -42,6 +42,8 @@ public class HostBlackListsValidator {
         int total=skds.getRegisteredServersCount();
         int rango=total/20;
         System.out.println("ESte es el rango"+rango);
+        
+        
         for (int i=0;i<skds.getRegisteredServersCount() && ocurrencesCount<BLACK_LIST_ALARM_COUNT;i++){
             checkedListsCount++;
             
