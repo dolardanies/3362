@@ -27,6 +27,7 @@ public class HostBlackListsValidator {
      * BLACK_LIST_ALARM_COUNT, the search is finished, the host reported as
      * NOT Trustworthy, and the list of the five blacklists returned.
      * @param ipaddress suspicious host's IP address.
+     * @param num_hilos
      * @return  Blacklists numbers where the given host's IP address was found.
      */
     public List<Integer> checkHost(String ipaddress, int num_hilos){
@@ -37,15 +38,32 @@ public class HostBlackListsValidator {
         int checkedListsCount=0;
         //En proceso de modificacion
         int total=skds.getRegisteredServersCount();
-        int rango=total/num_hilos;
-        int k=0;
-        while(k<total){
-            System.out.println("k"+k);
-            k+=rango;
+        int segmento=total/num_hilos;
+        int inic;
+        int fin;
+        for(int i=0;i<=num_hilos;i++){
+            inic= (total/num_hilos)*i;
+            fin= ((total/num_hilos)*i)+segmento;
             
+            
+            if(fin<=total){
+                
+                BusquedaThread hilo= new BusquedaThread();
+                hilo.start();
+                hilo.busqueda(inic, fin, ipaddress);
+                
+            }
+            if(fin!=total && i==num_hilos-1){
+                BusquedaThread hilo= new BusquedaThread();
+                hilo.start();
+                hilo.busqueda(fin, total, ipaddress);
+                
+            }
             
         }
-       
+        
+        
+       /*
         
         
         for (int i=0;i<skds.getRegisteredServersCount() && ocurrencesCount<BLACK_LIST_ALARM_COUNT;i++){
@@ -65,7 +83,7 @@ public class HostBlackListsValidator {
         else{
             skds.reportAsTrustworthy(ipaddress);
         }                
-        
+        */
         LOG.log(Level.INFO, "Checked Black Lists:{0} of {1}", new Object[]{checkedListsCount, skds.getRegisteredServersCount()});
         
         return blackListOcurrences;

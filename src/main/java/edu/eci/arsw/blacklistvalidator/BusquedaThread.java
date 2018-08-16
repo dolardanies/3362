@@ -31,7 +31,7 @@ public class BusquedaThread extends Thread{
             }
             
         }
-        System.out.println("Ocurrencias de servidores maliciosos: "+num_ocurrencias);
+        System.out.println("Ocurrencias de servidores maliciosos desde "+num_ini+" hasta "+num_fin+" fueron "+ num_ocurrencias);
     }
     
     public void busqueda(int ini, int fin, String ip){
