@@ -16,7 +16,7 @@ public class BusquedaThread extends Thread{
     
     int num_ini;
     int num_fin;
-    int ipaddress;
+    String ipaddress;
     LinkedList<Integer> OcurrenciasListaNegra=new LinkedList<>();
     int num_ocurrencias;
     HostBlacklistsDataSourceFacade skds=HostBlacklistsDataSourceFacade.getInstance();
@@ -24,20 +24,21 @@ public class BusquedaThread extends Thread{
     @Override
     public void run(){
         for (int i=num_ini; i<=num_fin;i++){
-            System.out.println("Busqueda de un segmento del conjunto de servidores");
+            
             if (skds.isInBlackListServer(i, ipaddress)){
                 OcurrenciasListaNegra.add(i);
                 num_ocurrencias++;
             }
             
         }
+        System.out.println("Ocurrencias de servidores maliciosos: "+num_ocurrencias);
     }
     
-    public void busqueda(int ini, int fin, int ip){
+    public void busqueda(int ini, int fin, String ip){
         this.num_ini=ini;
         this.num_fin=fin;
         this.ipaddress= ip;
-        System.out.println("Rango de inicio a fin de la lista total");
+        //return num_ocurrencias;
     }
        
     

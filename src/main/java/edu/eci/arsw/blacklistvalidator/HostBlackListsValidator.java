@@ -32,16 +32,20 @@ public class HostBlackListsValidator {
     public List<Integer> checkHost(String ipaddress, int num_hilos){
         
         LinkedList<Integer> blackListOcurrences=new LinkedList<>();
-        
         int ocurrencesCount=0;
-        
         HostBlacklistsDataSourceFacade skds=HostBlacklistsDataSourceFacade.getInstance();
-        
         int checkedListsCount=0;
         //En proceso de modificacion
         int total=skds.getRegisteredServersCount();
-        int rango=total/20;
-        System.out.println("ESte es el rango"+rango);
+        int rango=total/num_hilos;
+        int k=0;
+        while(k<total){
+            System.out.println("k"+k);
+            k+=rango;
+            
+            
+        }
+       
         
         
         for (int i=0;i<skds.getRegisteredServersCount() && ocurrencesCount<BLACK_LIST_ALARM_COUNT;i++){
