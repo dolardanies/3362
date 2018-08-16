@@ -31,15 +31,15 @@ public class BusquedaThread extends Thread{
             }
             
         }
-        System.out.println("Ocurrencias de servidores maliciosos desde "+num_ini+" hasta "+num_fin+" fueron "+ num_ocurrencias);
+        System.out.println("El numero de ocurrencias de "+num_ini+" hasta "+num_fin+" es: "+num_ocurrencias);
+        
     }
     
     public void busqueda(int ini, int fin, String ip){
         this.num_ini=ini;
         this.num_fin=fin;
         this.ipaddress= ip;
-        //return num_ocurrencias;
+        
     }
-       
     
 }

@@ -30,7 +30,7 @@ public class HostBlackListsValidator {
      * @param num_hilos
      * @return  Blacklists numbers where the given host's IP address was found.
      */
-    public List<Integer> checkHost(String ipaddress, int num_hilos){
+    public List<Integer> checkHost(String ipaddress, int num_hilos) {
         
         LinkedList<Integer> blackListOcurrences=new LinkedList<>();
         int ocurrencesCount=0;
@@ -43,23 +43,18 @@ public class HostBlackListsValidator {
         int fin;
         for(int i=0;i<=num_hilos;i++){
             inic= (total/num_hilos)*i;
-            fin= ((total/num_hilos)*i)+segmento;
-            
-            
-            if(fin<=total){
-                
+            fin= ((total/num_hilos)*i)+segmento;                      
+            if(fin<=total){                
                 BusquedaThread hilo= new BusquedaThread();
+                hilo.busqueda(inic, fin, ipaddress); 
                 hilo.start();
-                hilo.busqueda(inic, fin, ipaddress);
-                
             }
             if(fin!=total && i==num_hilos-1){
                 BusquedaThread hilo= new BusquedaThread();
-                hilo.start();
                 hilo.busqueda(fin, total, ipaddress);
+                hilo.start();
                 
             }
-            
         }
         
         
@@ -90,7 +85,7 @@ public class HostBlackListsValidator {
     }
     
     
-    private static final Logger LOG = Logger.getLogger(HostBlackListsValidator.class.getName());
+        private static final Logger LOG = Logger.getLogger(HostBlackListsValidator.class.getName());
     
     
     

@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.blacklistvalidator;
 
+import static java.lang.Runtime.getRuntime;
 import java.util.List;
 
 /**
@@ -15,17 +16,9 @@ public class Main {
     
     public static void main(String a[]){
         HostBlackListsValidator hblv=new HostBlackListsValidator();
-        List<Integer> blackListOcurrences=hblv.checkHost("200.24.34.55", 15);
+        getRuntime();
+        List<Integer> blackListOcurrences=hblv.checkHost("202.24.34.55",100);
         System.out.println("The host was found in the following blacklists:"+blackListOcurrences);
-        //Begin
-        //BusquedaThread uno= new BusquedaThread();
-        
-        
-        //uno.busqueda(1, 200, "200.24.34.55");
-        //dos.rangos(40000, 80000);
-        
-        //uno.start();
-        //dos.start();
     }
     
 }
